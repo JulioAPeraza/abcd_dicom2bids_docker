@@ -26,4 +26,4 @@ neurodocker generate docker \
             --run-bash 'git clone https://github.com/NBCLab/abcd_dicom2bids_docker.git /opt/abcd_dicom2bids_docker' \
             --run-bash 'mkdir /work/; mkdir /data/; mkdir /out/'
 
-docker build -t abcddicom2bids - < /Users/miriedel/Desktop/GitHub/abcd_dicom2bids_docker/dockerfile_07072021
+docker build --no-cache -t abcddicom2bids - < /Users/miriedel/Desktop/GitHub/abcd_dicom2bids_docker/dockerfile_07072021
