@@ -21,8 +21,9 @@ neurodocker generate docker \
             --dcm2niix version=latest method=source \
             --matlabmcr version=2018a method=binaries \
             --fsl version=5.0.10 method=binaries \
+            --entrypoint "/neurodocker/startup.sh python3 /opt/abcd_dicom2bids_docker/entrypoint.py" \
             --workdir=/opt/abcd_dicom2bids_docker \
             --run-bash 'git clone https://github.com/NBCLab/abcd_dicom2bids_docker.git /opt/abcd_dicom2bids_docker' \
-            --entrypoint "/neurodocker/startup.sh python3 /opt/abcd_dicom2bids_docker/entrypoint.py"
+            --run-bash 'mkdir /work/; mkdir /data/; mkdir /out/'
 
 docker build -t abcddicom2bids - < /Users/miriedel/Desktop/GitHub/abcd_dicom2bids_docker/dockerfile_07072021
