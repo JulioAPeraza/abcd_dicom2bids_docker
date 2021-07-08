@@ -30,7 +30,7 @@ def main(argv=None):
       --qc /data/qc_spreadsheet.txt \
       --output /out/ \
       --config /data/config_file.ini \
-      --remove'.format(subject_text_file=subject_text_file, modalities=args.modalities))
+      --remove'.format(subject_text_file=subject_text_file, modalities=args.modalities)
 
     os.system(cmd)
 
