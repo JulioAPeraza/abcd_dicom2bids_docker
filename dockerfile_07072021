@@ -1,4 +1,4 @@
-# Timestamp: 2021/07/08 01:48:52 UTC
+# Timestamp: 2021/07/08 10:24:36 UTC
 # 
 # Thank you for using Neurodocker. If you discover any issues
 # or ways to improve this software, please submit an issue or
@@ -97,10 +97,6 @@ WORKDIR /opt/abcd-dicom2bids
 
 RUN bash -c 'git clone https://github.com/DCAN-Labs/abcd-dicom2bids.git /opt/abcd-dicom2bids'
 
-WORKDIR /opt/abcd_dicom2bids_docker
-
-RUN bash -c 'git clone https://github.com/NBCLab/abcd_dicom2bids_docker.git /opt/abcd_dicom2bids_docker'
-
 ENV PATH="/opt/dcm2niix-latest/bin:$PATH"
 RUN apt-get update -qq \
     && apt-get install -y -q --no-install-recommends \
@@ -184,6 +180,10 @@ RUN apt-get update -qq \
     && echo "Installing FSL conda environment ..." \
     && bash /opt/fsl-5.0.10/etc/fslconf/fslpython_install.sh -f /opt/fsl-5.0.10
 
+WORKDIR /opt/abcd_dicom2bids_docker
+
+RUN bash -c 'git clone https://github.com/NBCLab/abcd_dicom2bids_docker.git /opt/abcd_dicom2bids_docker'
+
 ENTRYPOINT ["/neurodocker/startup.sh", "python3", "/opt/abcd_dicom2bids_docker/entrypoint.py"]
 
 RUN echo '{ \
@@ -243,14 +243,6 @@ RUN echo '{ \
     \n      "git clone https://github.com/DCAN-Labs/abcd-dicom2bids.git /opt/abcd-dicom2bids" \
     \n    ], \
     \n    [ \
-    \n      "workdir", \
-    \n      "/opt/abcd_dicom2bids_docker" \
-    \n    ], \
-    \n    [ \
-    \n      "run_bash", \
-    \n      "git clone https://github.com/NBCLab/abcd_dicom2bids_docker.git /opt/abcd_dicom2bids_docker" \
-    \n    ], \
-    \n    [ \
     \n      "dcm2niix", \
     \n      { \
     \n        "version": "latest", \
@@ -270,6 +262,14 @@ RUN echo '{ \
     \n        "version": "5.0.10", \
     \n        "method": "binaries" \
     \n      } \
+    \n    ], \
+    \n    [ \
+    \n      "workdir", \
+    \n      "/opt/abcd_dicom2bids_docker" \
+    \n    ], \
+    \n    [ \
+    \n      "run_bash", \
+    \n      "git clone https://github.com/NBCLab/abcd_dicom2bids_docker.git /opt/abcd_dicom2bids_docker" \
     \n    ], \
     \n    [ \
     \n      "entrypoint", \

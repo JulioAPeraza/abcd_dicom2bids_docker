@@ -1,5 +1,6 @@
 import os
 import os.path as op
+import argparse
 
 def get_parser():
     parser = argparse.ArgumentParser(description='Downloads ABCD participant'
@@ -27,6 +28,7 @@ def main(argv=None):
     if not op.isfile(args.config_file):
         raise ValueError('{} is not an existing file!'.format(args.config_file))
 
+    os.makedirs(args.work_dir, exist_ok=True)
     subject_text_file = op.join(args.work_dir, 'subject_ids.txt')
     with open(subject_text_file, 'w') as fo:
         for sub in args.subs:
@@ -41,8 +43,6 @@ def main(argv=None):
       --remove'.format(subject_text_file=subject_text_file, modalities=args.modalities,
                        qc_spreadsheet=args.qc_spreadsheet, output_directory=args.out_dir,
                        config_file=args.config_file)
-
-    print(cmd)
 
     os.system(cmd)
 
