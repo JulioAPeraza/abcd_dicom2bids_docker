@@ -6,7 +6,7 @@ def get_parser():
              'data and converts to BIDS format')
     parser.add_argument('--subjects', required=True, dest='subs')
     parser.add_argument('--work_dir', required=False, dest='work_dir', default='~/temp')
-    parser.add_argument('--modalities', required=False, dest='modalities' default=['anat', 'func'])
+    parser.add_argument('--modalities', required=False, dest='modalities', default=['anat', 'func'])
     parser.add_argument('--qc', required=True, dest='qc_spreadsheet')
     parser.add_argument('--config', required=True, dest='config_file')
     parser.add_argument('--out_dir', required=False, dest='out_dir', default='~/abcd/dset')

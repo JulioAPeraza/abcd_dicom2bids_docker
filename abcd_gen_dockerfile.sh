@@ -18,11 +18,11 @@ neurodocker generate docker \
                           six==1.15.0 SQLAlchemy==1.3.20' \
             --workdir=/opt/abcd-dicom2bids \
             --run-bash 'git clone https://github.com/DCAN-Labs/abcd-dicom2bids.git /opt/abcd-dicom2bids' \
-            --workdir=/opt/abcd-dicom2bids-docker \
-            --run-bash 'git clone https://github.com/NBCLab/abcd-dicom2bids_docker.git /opt/abcd-dicom2bids-docker' \
+            --workdir=/opt/abcd_dicom2bids_docker \
+            --run-bash 'git clone https://github.com/NBCLab/abcd_dicom2bids_docker.git /opt/abcd_dicom2bids_docker' \
             --dcm2niix version=latest method=source \
             --matlabmcr version=2018a method=binaries \
             --fsl version=5.0.10 method=binaries \
-            --entrypoint "/neurodocker/startup.sh python3 /opt/abcd-dicom2bids-docker/entrypoint.py"
+            --entrypoint "/neurodocker/startup.sh python3 /opt/abcd_dicom2bids_docker/entrypoint.py"
 
-docker build --no-cache -t abcddicom2bids - < /Users/miriedel/Desktop/GitHub/abcd_dicom2bids_docker/dockerfile_07072021
+docker build -t abcddicom2bids - < /Users/miriedel/Desktop/GitHub/abcd_dicom2bids_docker/dockerfile_07072021
