@@ -29,6 +29,7 @@ def main(argv=None):
       --modalities {modalities} \
       --sessions {sessions} \
       --temp /work \
+      --download /raw \
       --qc /data/qc_spreadsheet.txt \
       --output /out/ \
       --config /data/config_file.ini \
