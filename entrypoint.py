@@ -24,13 +24,13 @@ def main(argv=None):
         for sub in args.subs:
             fo.write('{}\n'.format(sub))
 
-    cmd='python3 /opt/abcd-dicom2bids/abcd2bids.py /opt/fsl-5.0.10/ /opt/matlabmcr-2018a/v94/ \
+    cmd="python3 /opt/abcd-dicom2bids/abcd2bids.py /opt/fsl-5.0.10/ /opt/matlabmcr-2018a/v94/ \
       --subject-list {subject_text_file} \
-      --modalities {modalities} \
+      --modalities '{modalities}' \
       --qc /data/qc_spreadsheet.txt \
       --output /out/ \
       --config /data/config_file.ini \
-      --remove'.format(subject_text_file=subject_text_file, modalities=args.modalities)
+      --remove".format(subject_text_file=subject_text_file, modalities="', '".join(args.modalities))
 
     os.system(cmd)
 
