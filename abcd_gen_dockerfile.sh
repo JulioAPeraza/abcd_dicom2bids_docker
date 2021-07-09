@@ -27,6 +27,7 @@ neurodocker generate docker \
             --entrypoint "/neurodocker/startup.sh python3 /opt/abcd_dicom2bids_docker/entrypoint.py" \
             --workdir=/opt/abcd_dicom2bids_docker \
             --run-bash 'git clone https://github.com/NBCLab/abcd_dicom2bids_docker.git /opt/abcd_dicom2bids_docker' \
-            --run-bash 'mkdir /work/; mkdir /data/; mkdir /out/' 
+            --run-bash 'mkdir /work/; mkdir /data/; mkdir /out/'
+
 
 docker build -t abcddicom2bids - < /Users/miriedel/Desktop/GitHub/abcd_dicom2bids_docker/dockerfile_07072021
