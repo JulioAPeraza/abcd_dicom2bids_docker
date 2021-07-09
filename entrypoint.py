@@ -28,13 +28,13 @@ def main(argv=None):
     cmd="python3 /opt/abcd-dicom2bids/abcd2bids.py /opt/fsl-5.0.10/ /opt/matlabmcr-2018a/v94/ \
       --subject-list {subject_text_file} \
       --modalities '{modalities}' \
-      --sessions '{sessions}' \
+      --sessions {sessions} \
       --qc /data/qc_spreadsheet.txt \
       --output /out/ \
       --config /data/config_file.ini \
       --remove".format(subject_text_file=subject_text_file,
                        modalities="' '".join(args.modalities),
-                       sessions="' '".join(args.sessions))
+                       sessions=args.sessions)
 
     os.system(cmd)
 
