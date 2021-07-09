@@ -7,7 +7,7 @@ def get_parser():
     parser = argparse.ArgumentParser(description='Downloads ABCD participant'
              'data and converts to BIDS format')
     parser.add_argument('--subjects', required=True, dest='subs', nargs='+')
-    parser.add_argument('--modalities', required=False, dest='modalities', nargs='+', default="'anat', 'func'")
+    parser.add_argument('--modalities', required=False, dest='modalities', nargs='+', type=str, default="'anat', 'func'")
     parser.add_argument('--sessions', required=False, dest='sessions', nargs='+', default=['baseline_year_1_arm_1', '2_year_follow_up_y_arm_1'])
     return parser
 
