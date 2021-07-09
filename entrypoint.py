@@ -32,6 +32,7 @@ def main(argv=None):
       --config /data/config_file.ini \
       --remove".format(subject_text_file=subject_text_file, modalities="' '".join(args.modalities))
 
+    print(cmd)
     os.system(cmd)
 
 
