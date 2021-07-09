@@ -33,6 +33,7 @@ def main(argv=None):
       --qc /data/qc_spreadsheet.txt \
       --output /out/ \
       --config /data/config_file.ini \
+      --stop-before validate_bids \
       --remove".format(subject_text_file=subject_text_file,
                        modalities=modalities,
                        sessions=sessions)
