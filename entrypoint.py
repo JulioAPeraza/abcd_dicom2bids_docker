@@ -6,7 +6,7 @@ import argparse
 def get_parser():
     parser = argparse.ArgumentParser(description='Downloads ABCD participant'
              'data and converts to BIDS format')
-    parser.add_argument('--subjects', required=True, dest='subs')
+    parser.add_argument('--subjects', required=True, dest='subs', nargs='+')
     parser.add_argument('--modalities', required=False, dest='modalities', default=['anat', 'func'])
     return parser
 
