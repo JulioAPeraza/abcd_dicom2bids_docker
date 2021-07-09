@@ -22,6 +22,7 @@ def main(argv=None):
             fo.write('{}\n'.format(sub))
 
     modalities = "'{}'".format(' '.join(args.modalities).replace(' ', "' '"))
+    sessions = "{}".format(' '.join(args.sessions))
 
     cmd="python3 /opt/abcd-dicom2bids/abcd2bids.py /opt/fsl-5.0.10/ /opt/matlabmcr-2018a/v94/ \
       --subject-list {subject_text_file} \
@@ -33,7 +34,7 @@ def main(argv=None):
       --config /data/config_file.ini \
       --remove".format(subject_text_file=subject_text_file,
                        modalities=modalities,
-                       sessions=args.sessions)
+                       sessions=sessions)
 
     print(cmd)
     os.system(cmd)
