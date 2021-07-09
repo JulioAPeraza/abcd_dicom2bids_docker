@@ -7,7 +7,7 @@ def get_parser():
     parser = argparse.ArgumentParser(description='Downloads ABCD participant'
              'data and converts to BIDS format')
     parser.add_argument('--subjects', required=True, dest='subs', nargs='+')
-    parser.add_argument('--modalities', required=False, dest='modalities', nargs='+', type=str, default="'anat', 'func'")
+    parser.add_argument('--modalities', required=False, dest='modalities', nargs='+', type=str, default=['anat', 'func'])
     parser.add_argument('--sessions', required=False, dest='sessions', nargs='+', default=['baseline_year_1_arm_1', '2_year_follow_up_y_arm_1'])
     return parser
 
@@ -21,8 +21,8 @@ def main(argv=None):
         for sub in args.subs:
             fo.write('{}\n'.format(sub))
 
-    print(args.modalities)
-    print(type(args.modalities))
+    modalities = "'{}'".format(' '.join(args.modalities).replace(' ', "' '"))
+
     cmd="python3 /opt/abcd-dicom2bids/abcd2bids.py /opt/fsl-5.0.10/ /opt/matlabmcr-2018a/v94/ \
       --subject-list {subject_text_file} \
       --modalities {modalities} \
@@ -32,9 +32,10 @@ def main(argv=None):
       --output /out/ \
       --config /data/config_file.ini \
       --remove".format(subject_text_file=subject_text_file,
-                       modalities=args.modalities,
+                       modalities=modalities,
                        sessions=args.sessions)
 
+    print(cmd)
     os.system(cmd)
 
 
