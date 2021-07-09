@@ -16,10 +16,6 @@ def main(argv=None):
 
     args = get_parser().parse_args(argv)
 
-    for i in args.modalities:
-        if i not in ['anat', 'func', 'dwi']:
-            raise ValueError('{} not a supported modality!'.format(i))
-
     subject_text_file = '/work/subject_ids.txt'
     with open(subject_text_file, 'w') as fo:
         for sub in args.subs:
