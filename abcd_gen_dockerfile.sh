@@ -29,8 +29,8 @@ neurodocker generate docker \
             --run 'curl -sSL -o /opt/docker/docker-ce-cli_19.03.15~3-0~debian-stretch_amd64.deb https://download.docker.com/linux/debian/dists/stretch/pool/stable/amd64/docker-ce-cli_19.03.15~3-0~debian-stretch_amd64.deb' \
             --run 'dpkg -i /opt/docker/docker-ce-cli_19.03.15~3-0~debian-stretch_amd64.deb' \
             --workdir=/opt/abcd_dicom2bids_docker \
-            --run-bash 'git clone https://github.com/NBCLab/abcd_dicom2bids_docker.git /opt/abcd_dicom2bids_dockerimg6' \
-            --entrypoint "/neurodocker/startup.sh python3 /opt/abcd_dicom2bids_dockerimg6/entrypoint.py"
+            --run-bash 'git clone https://github.com/NBCLab/abcd_dicom2bids_docker.git /opt/abcd_dicom2bids_dockerimg7' \
+            --entrypoint "/neurodocker/startup.sh python3 /opt/abcd_dicom2bids_dockerimg7/entrypoint.py"
 
 #build docker image
 docker build -t abcddicom2bids - < /Users/miriedel/Desktop/GitHub/abcd_dicom2bids_docker/dockerfile_07092021
