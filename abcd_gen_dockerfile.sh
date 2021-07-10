@@ -18,20 +18,20 @@ neurodocker generate docker \
                            patsy==0.5.1 pybids==0.12.4 click==7.1.2
                            python-dateutil==2.8.1 pytz==2020.4 scipy==1.4.1
                            SQLAlchemy==1.3.20' \
-            --workdir=/opt/abcd-dicom2bids \
-            --run-bash 'git clone https://github.com/DCAN-Labs/abcd-dicom2bids.git /opt/abcd-dicom2bids' \
             --dcm2niix version=latest method=source \
             --matlabmcr version=2018a method=binaries \
             --fsl version=5.0.10 method=binaries \
             --add-to-entrypoint "source activate /opt/miniconda-latest/envs/neuro" \
             --workdir=/opt/docker \
             --run-bash 'mkdir /work/; mkdir /data/; mkdir /out/; mkdir /raw/; mkdir ~/.aws/' \
-            --workdir=/opt/abcd_dicom2bids_docker-image \
-            --run-bash 'git clone https://github.com/NBCLab/abcd_dicom2bids_docker.git /opt/abcd_dicom2bids_docker-image' \
-            --entrypoint "/neurodocker/startup.sh python3 /opt/abcd_dicom2bids_docker-image/entrypoint.py"
+            --workdir=/opt/abcd-dicom2bids \
+            --run-bash 'git clone https://github.com/mriedel56/abcd-dicom2bids.git /opt/abcd-dicom2bids' \
+            --workdir=/opt/abcd_dicom2bids_docker \
+            --run-bash 'git clone https://github.com/NBCLab/abcd_dicom2bids_docker.git /opt/abcd_dicom2bids_docker' \
+            --entrypoint "/neurodocker/startup.sh python3 /opt/abcd_dicom2bids_docker/entrypoint.py"
 
 #build docker image
-docker build -t abcddicom2bids - < /Users/miriedel/Desktop/GitHub/abcd_dicom2bids_docker/dockerfile_07092021
+docker build --no-cache -t abcddicom2bids - < /Users/miriedel/Desktop/GitHub/abcd_dicom2bids_docker/dockerfile_07092021
 
 #convert docker image to singularity image
 #docker run -v /var/run/docker.sock:/var/run/docker.sock -v /Users/miriedel/Desktop:/output --privileged -t --rm singularityware/docker2singularity abcd2dicoms
