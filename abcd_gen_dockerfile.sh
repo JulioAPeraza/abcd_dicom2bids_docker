@@ -24,14 +24,12 @@ neurodocker generate docker \
             --add-to-entrypoint "source activate /opt/miniconda-latest/envs/neuro" \
             --workdir=/opt/docker \
             --run-bash 'mkdir /work/; mkdir /data/; mkdir /out/; mkdir /raw/; mkdir ~/.aws/' \
-            --workdir=/opt/abcd-dicom2bids \
-            --run-bash 'git clone https://github.com/mriedel56/abcd-dicom2bids.git /opt/abcd-dicom2bids' \
+            --env "MCR_CACHE_ROOT=/opt/matlabmcr-2018a/v94" \
+            --workdir=/opt/abcd-dicom2bids/ \
+            --run-bash 'git clone https://github.com/mriedel56/abcd-dicom2bids.git /opt/abcd-dicom2bids/' \
             --workdir=/opt/abcd_dicom2bids_docker \
             --run-bash 'git clone https://github.com/NBCLab/abcd_dicom2bids_docker.git /opt/abcd_dicom2bids_docker' \
             --entrypoint "/neurodocker/startup.sh python3 /opt/abcd_dicom2bids_docker/entrypoint.py"
 
 #build docker image
-docker build --no-cache -t abcddicom2bids - < /Users/miriedel/Desktop/GitHub/abcd_dicom2bids_docker/dockerfile_07092021
-
-#convert docker image to singularity image
-#docker run -v /var/run/docker.sock:/var/run/docker.sock -v /Users/miriedel/Desktop:/output --privileged -t --rm singularityware/docker2singularity abcd2dicoms
+docker build -t abcddicom2bids - < /Users/miriedel/Desktop/GitHub/abcd_dicom2bids_docker/dockerfile_07092021
