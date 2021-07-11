@@ -24,7 +24,7 @@ def main(argv=None):
     modalities = "'{}'".format(' '.join(args.modalities).replace(' ', "' '"))
     sessions = "{}".format(' '.join(args.sessions))
 
-    cmd="python3 /opt/abcd-dicom2bids/abcd2bids.py /opt/fsl-5.0.10/ /opt/matlabmcr-2018a/v94/ \
+    cmd="python3 /opt/abcd-dicom2bids/abcd2bids.py /opt/fsl-5.0.10/ /opt/matlabmcr-2016b/v91/ \
       --subject-list {subject_text_file} \
       --modalities {modalities} \
       --sessions {sessions} \

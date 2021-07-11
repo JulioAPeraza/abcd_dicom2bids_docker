@@ -19,12 +19,12 @@ neurodocker generate docker \
                            python-dateutil==2.8.1 pytz==2020.4 scipy==1.4.1
                            SQLAlchemy==1.3.20' \
             --dcm2niix version=latest method=source \
-            --matlabmcr version=2018a method=binaries \
+            --matlabmcr version=2016b method=binaries \
             --fsl version=5.0.10 method=binaries \
             --add-to-entrypoint "source activate /opt/miniconda-latest/envs/neuro" \
             --workdir=/opt/docker \
             --run-bash 'mkdir /work/; mkdir /data/; mkdir /out/; mkdir /raw/; mkdir ~/.aws/' \
-            --env "MCR_CACHE_ROOT=/opt/matlabmcr-2018a/v94" \
+            --env "MCR_CACHE_ROOT=/opt/matlabmcr-2016b/v91" \
             --workdir=/opt/abcd-dicom2bids/ \
             --run-bash 'git clone https://github.com/mriedel56/abcd-dicom2bids.git /opt/abcd-dicom2bids/' \
             --workdir=/opt/abcd_dicom2bids_docker \
