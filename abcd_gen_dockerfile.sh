@@ -24,7 +24,7 @@ neurodocker generate docker \
             --add-to-entrypoint "source activate /opt/miniconda-latest/envs/neuro" \
             --workdir=/opt/docker \
             --run-bash 'mkdir /work/; mkdir /data/; mkdir /out/; mkdir /raw/; mkdir ~/.aws/' \
-            --env "MCR_CACHE_ROOT=/opt/matlabmcr-2016b/v91" \
+            --env "MCR_CACHE_ROOT=/work" \
             --workdir=/opt/abcd_dicom2bids_docker \
             --run-bash 'git clone https://github.com/NBCLab/abcd_dicom2bids_docker.git /opt/abcd_dicom2bids_docker' \
             --workdir=/opt/abcd-dicom2bids/ \
@@ -32,4 +32,4 @@ neurodocker generate docker \
             --entrypoint "/neurodocker/startup.sh python3 /opt/abcd_dicom2bids_docker/entrypoint.py"
 
 #build docker image
-docker build -t abcddicom2bids - < /Users/miriedel/Desktop/GitHub/abcd_dicom2bids_docker/dockerfile_07092021
+docker build -t mriedel56/abcddicom2bids:21.07.12 - < /Users/miriedel/Desktop/GitHub/abcd_dicom2bids_docker/dockerfile_07122021
