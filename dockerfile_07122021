@@ -1,4 +1,4 @@
-# Timestamp: 2021/07/11 03:36:06 UTC
+# Timestamp: 2021/07/12 20:24:11 UTC
 # 
 # Thank you for using Neurodocker. If you discover any issues
 # or ways to improve this software, please submit an issue or
@@ -180,7 +180,7 @@ WORKDIR /opt/docker
 
 RUN bash -c 'mkdir /work/; mkdir /data/; mkdir /out/; mkdir /raw/; mkdir ~/.aws/'
 
-ENV MCR_CACHE_ROOT="/opt/matlabmcr-2016b/v91"
+ENV MCR_CACHE_ROOT="/work"
 
 WORKDIR /opt/abcd_dicom2bids_docker
 
@@ -274,7 +274,7 @@ RUN echo '{ \
     \n    [ \
     \n      "env", \
     \n      { \
-    \n        "MCR_CACHE_ROOT": "/opt/matlabmcr-2016b/v91" \
+    \n        "MCR_CACHE_ROOT": "/work" \
     \n      } \
     \n    ], \
     \n    [ \

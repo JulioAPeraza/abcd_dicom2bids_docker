@@ -5,7 +5,7 @@
 
 neurodocker generate docker \
             --no-print \
-            -o /Users/miriedel/Desktop/GitHub/abcd_dicom2bids_docker/dockerfile_07092021 \
+            -o /Users/miriedel/Desktop/GitHub/abcd_dicom2bids_docker/dockerfile_07122021 \
             --base=debian:stretch \
             --pkg-manager=apt \
             --install dcmtk jq git \
