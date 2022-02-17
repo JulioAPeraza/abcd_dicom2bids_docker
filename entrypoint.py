@@ -34,7 +34,7 @@ def get_parser():
     parser.add_argument(
         "-s",
         "--start_at",
-        dset="start_at",
+        dest="start_at",
         choices=STEP_NAMES,
         default=STEP_NAMES[0],
         help=(
