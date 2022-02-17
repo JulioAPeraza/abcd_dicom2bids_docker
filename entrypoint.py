@@ -1,6 +1,9 @@
 import argparse
 import os
 
+# Constant: List of function names of steps 1-5 in the list above
+STEP_NAMES = ["create_good_and_bad_series_table", "download_nda_data",
+              "unpack_and_setup", "correct_jsons", "validate_bids"]
 
 def get_parser():
     parser = argparse.ArgumentParser(
@@ -21,6 +24,16 @@ def get_parser():
         dest="sessions",
         nargs="+",
         default=["baseline_year_1_arm_1", "2_year_follow_up_y_arm_1"],
+    )
+    parser.add_argument(
+        "--stop_before",
+        dest="stop_before",
+        choices=STEP_NAMES,
+        default=STEP_NAMES[4],
+        help=("Give the name of the step in the wrapper to stop "
+              "at. All steps before will be run. Here are the "
+              "names of all of the steps, in order from first to last: "
+              + ", ".join(STEP_NAMES))
     )
     return parser
 
@@ -45,10 +58,11 @@ def main(argv=None):
       --temp /work \
       --download /raw \
       --qc /data/qc_spreadsheet.txt \
+      --stop_before {stop_before} \
       --output /out/ \
       --config /data/config_file.ini \
       ".format(
-        subject_text_file=subject_text_file, modalities=modalities, sessions=sessions
+        subject_text_file=subject_text_file, modalities=modalities, sessions=sessions,stop_before=stop_before
     )
 
     print(cmd)
