@@ -62,7 +62,7 @@ def main(argv=None):
       --output /out/ \
       --config /data/config_file.ini \
       ".format(
-        subject_text_file=subject_text_file, modalities=modalities, sessions=sessions,stop_before=stop_before
+        subject_text_file=subject_text_file, modalities=modalities, sessions=sessions,stop_before=args.stop_before
     )
 
     print(cmd)
